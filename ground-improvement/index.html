@@ -107,6 +107,188 @@ nav[aria-label="breadcrumb"] a:hover, .crumb a:hover { color: #FCD34D !important
 .crumb a[href="/"], .breadcrumb a[href="/"], a.home-link { color: #FFFFFF !important; }
 .brand-name, .logo-text, .main, .brand { color: #FFFFFF !important; }
 </style>
+<style id="comprehensive-defaults-v1">
+/* Reset basico */
+* { box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; margin: 0; line-height: 1.6; color: #1E293B; background: #F8FAFC; }
+
+/* Layout wrapper */
+.layout, .main-wrapper, .content-area { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+
+/* Header */
+.header, .main-header, header.main-header { background: #0F172A; color: #FFF; padding: 1rem 1.5rem; margin-bottom: 1.5rem; }
+.header-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.header-email { color: #FCD34D; text-decoration: none; }
+.brand, .brand-text, .brand-name { color: #FFFFFF; font-weight: 700; font-size: 1.25rem; line-height: 1.1; }
+.brand-city { color: #94A3B8; font-size: .85rem; display: block; }
+.brand-logo { display: inline-block; vertical-align: middle; }
+
+/* Breadcrumb / crumb */
+.crumb, .breadcrumb { padding: .5rem 0; font-size: .85rem; color: rgba(255,255,255,.85); }
+.crumb a, .breadcrumb a { color: #FFFFFF; text-decoration: underline; }
+.crumb a:hover, .breadcrumb a:hover { color: #FCD34D; }
+
+/* Body wrapper - layout flex */
+.layout { display: grid; grid-template-columns: 240px 1fr; gap: 1.5rem; margin: 1.5rem auto; padding: 0 1.5rem; max-width: 1280px; }
+@media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
+
+/* Sidebar */
+.sb-home, .sidebar, aside { background: #1E293B; color: #FFFFFF; border-radius: 10px; padding: 1rem; }
+.sb-home a, .sidebar a, aside a { color: #FFFFFF; text-decoration: none; display: block; padding: .5rem .75rem; border-radius: 6px; transition: background .15s; }
+.sb-home a:hover, .sidebar a:hover { background: rgba(255,255,255,.08); }
+.cat-row, .cat-item { display: flex; align-items: center; justify-content: space-between; padding: .4rem .75rem; }
+.cat-name { color: #FFFFFF; font-weight: 500; flex: 1; }
+.cat-toggle, .cat-arrow { background: transparent; border: 0; color: #FFFFFF; cursor: pointer; padding: .2rem .4rem; }
+.cat-sub { padding-left: 1rem; }
+.cat-sub a { font-size: .85rem; color: rgba(255,255,255,.85); padding: .3rem .75rem; }
+
+/* Block / section base */
+.block { padding: 2rem 1.5rem; }
+.block > div { max-width: 1200px; margin: 0 auto; }
+.map-block { padding: 2rem 0; background: #F1F5F9; }
+.map-wrap { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+#mapa-ciudad { width: 100%; height: 380px; border-radius: 8px; }
+
+/* Cards / grid */
+.cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+.card { background: #FFF; border: 1px solid #E5E7EB; border-radius: 10px; padding: 1.2rem; text-decoration: none; color: inherit; box-shadow: 0 1px 2px rgba(0,0,0,.04); transition: all .2s; }
+.card:hover { transform: translateY(-2px); box-shadow: 0 4px 14px rgba(0,0,0,.08); border-color: #1D4ED8; }
+
+/* H1/H2 */
+h1 { color: #0F172A; font-size: 1.85rem; margin: 1rem 0 1.5rem; line-height: 1.2; }
+h2 { color: #1E293B; font-size: 1.35rem; margin: 1.5rem 0 .8rem; font-weight: 700; }
+h3 { color: #1E293B; font-size: 1.1rem; margin: 1rem 0 .5rem; }
+p { margin: 0 0 1rem; color: #374151; }
+a { color: #1D4ED8; }
+
+/* Mid CTA */
+.mid-cta { padding: 2rem 0; }
+.mid-cta > div { max-width: 720px; margin: 0 auto; background: linear-gradient(135deg, #1D4ED815, #1D4ED808); border-left: 4px solid #1D4ED8; padding: 1.6rem 1.8rem; border-radius: 8px; text-align: center; }
+
+/* Footer */
+footer, .footer { background: #0F172A; color: #94A3B8; padding: 1.5rem; text-align: center; margin-top: 2rem; font-size: .85rem; }
+footer a, .footer a { color: #FCD34D; }
+
+/* Authority refs */
+.authority-refs { color: #94A3B8; font-size: .8rem; }
+.updated-info { color: #94A3B8; font-size: .8rem; font-style: italic; }
+</style>
+<style id="critical-visual-fix-v1">
+/* Sidebar: ancho 260px + adaptive font size */
+.sb-home, .sidebar, aside.sidebar, aside { width: 260px !important; }
+.sb-home .cat-row, .sidebar .cat-row, aside .cat-row, .nav-cat-row { font-size: .92rem; line-height: 1.25; }
+.sb-home .cat-name, .sidebar .cat-name, .cat-name { font-size: .92rem; line-height: 1.25; word-break: keep-all; hyphens: auto; }
+/* Labels muy largos: font-size más chico */
+.cat-name:where(:has(*)),
+.cat-row a, .nav-cat-link { white-space: normal; }
+
+/* Remover email sticky position:fixed (debe estar en flow del header) */
+.header-email[style*="position:fixed"],
+.header-email[style*="position: fixed"],
+a.header-email:where([href^="mailto:"]):not(footer a):not(.mid-cta a) { position: static !important; }
+header .header-email, header a[href^="mailto:"] { position: static !important; top: auto !important; right: auto !important; }
+
+/* Brand contrast: text-shadow para legibilidad */
+.brand, .brand-name, .brand-text, .logo-text, .main-header .brand {
+  text-shadow: 0 1px 3px rgba(0,0,0,.7);
+  color: #FFFFFF !important;
+}
+
+/* Header z-index alto (sobre map/content) */
+header, .header, .main-header, .top-header { position: relative; z-index: 100; }
+
+/* Map z-index bajo (debajo de navbar) */
+#mapa-ciudad, .map-block { z-index: 1; position: relative; }
+.leaflet-pane { z-index: 2; }
+
+/* Email contacto en navbar: contraste + visibilidad */
+.header-email, header .header-email, header a[href^="mailto:"] {
+  color: #FCD34D !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,.6);
+  font-weight: 500;
+}
+
+/* Servicios card grid: no incluir folders garbage */
+.cards-grid .card[href$="/css/"],
+.cards-grid .card[href$="/js/"],
+.cards-grid .card[href$="/img/"],
+.cards-grid .card[href$="/leaflet/"] { display: none !important; }
+
+/* Hero image santiago: contain en lugar de cover */
+.hero-bg, .hero-image { object-fit: contain; }
+</style>
+<style id="critical-fix-v2">
+/* Header NO sticky en sub layouts */
+header.main-header, header[role="banner"], body > header {
+  position: static !important;
+  top: auto !important;
+}
+/* Sidebar sticky, pero start después del header (más espacio) */
+.sb-home, aside.sidebar, .sidebar {
+  position: sticky !important;
+  top: 1rem !important;
+  z-index: 5 !important;
+  width: 260px !important;
+  max-height: calc(100vh - 2rem);
+  overflow-y: auto;
+}
+/* Header z-index alto siempre */
+header.main-header, header[role="banner"], body > header {
+  z-index: 100 !important;
+  position: relative !important;
+}
+/* Sidebar font-size más chico en labels largos */
+.cat-name, .cat-row a, .nav-cat-link {
+  font-size: .88rem !important;
+  line-height: 1.2 !important;
+  hyphens: auto;
+  word-break: break-word;
+}
+/* Sidebar items NO superpongan header */
+.layout, .main-wrapper, .content-area { padding-top: 1rem; }
+/* Header altura mínima visible */
+header.main-header, header[role="banner"], body > header { min-height: 80px; }
+/* Brand SIEMPRE visible (no cortado) */
+.brand, .brand-name, .brand-text, .logo-text {
+  text-shadow: 0 1px 3px rgba(0,0,0,.8) !important;
+  color: #FFFFFF !important;
+  font-weight: 700;
+}
+/* Email contraste alto */
+.header-email, header a[href^="mailto:"] {
+  color: #FCD34D !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,.8) !important;
+  font-weight: 600;
+}
+</style>
+<style id="kill-sticky-header-v1">
+/* MATAR position:fixed legacy de fase-i-fixes */
+nav.navbar, .header-top, .main-header, header.header, .header {
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  width: auto !important;
+}
+body { padding-top: 0 !important; }
+
+/* Sidebar sticky pero NO encima del header */
+.sb-home, aside.sidebar, .sidebar, aside {
+  position: sticky !important;
+  top: 1rem !important;
+  z-index: 2 !important;
+  width: 260px !important;
+}
+
+/* Cards en grid: layout flex/grid sin colapsar */
+.cards-grid, [style*="display:grid"][style*="auto-fill"] {
+  margin-top: 1rem !important;
+}
+
+/* Layout main: padding-top para clearance */
+main, .main-content, .content-area, .layout > *:not(aside):not(.sidebar) {
+  padding-top: 0 !important;
+}
+</style>
 </head><body>
 
 <header class="header">
@@ -128,7 +310,7 @@ nav[aria-label="breadcrumb"] a:hover, .crumb a:hover { color: #FCD34D !important
     <aside><a href="/" class="sb-home">Home</a><div class="cat-item" data-cat="investigation"><div class="cat-row"><a href="/investigation/" class="cat-name">Investigation</a><button class="cat-toggle" aria-expanded="false" aria-label="Expand Investigation"><span class="cat-arrow"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3.5l3 3 3-3" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></div><div class="cat-sub" hidden><a data-interlink="1" href="/">CPT (Cone Penetration Test)</a></div></div><div class="cat-item" data-cat="lab-in-situ"><div class="cat-row"><a data-interlink="1" href="/laboratory/" class="cat-name">In-Situ Testing</a><button class="cat-toggle" aria-expanded="false" aria-label="Expand In-Situ Testing"><span class="cat-arrow"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3.5l3 3 3-3" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></div><div class="cat-sub" hidden><a data-interlink="1" href="/">Field density test (sand cone method)</a></div></div><div class="cat-item" data-cat="laboratory"><div class="cat-row"><a data-interlink="1" href="/laboratory/" class="cat-name">Laboratory</a><button class="cat-toggle" aria-expanded="false" aria-label="Expand Laboratory"><span class="cat-arrow"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3.5l3 3 3-3" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></div><div class="cat-sub" hidden><a data-interlink="1" href="/in-situ-permeability/">Grain size analysis (sieve + hydrometer)</a><a data-interlink="1" href="/">Atterberg limits</a></div></div><div class="cat-item" data-cat="foundations"><div class="cat-row"><a data-interlink="1" href="/foundations/" class="cat-name">Foundations</a><button class="cat-toggle" aria-expanded="false" aria-label="Expand Foundations"><span class="cat-arrow"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3.5l3 3 3-3" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></div><div class="cat-sub" hidden><a data-interlink="1" href="/">Pile foundation design</a></div></div><div class="cat-item" data-cat="slopes"><div class="cat-row"><a data-interlink="1" href="/slopes/" class="cat-name">Slopes</a><button class="cat-toggle" aria-expanded="false" aria-label="Expand Slopes"><span class="cat-arrow"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3.5l3 3 3-3" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></div><div class="cat-sub" hidden><a data-interlink="1" href="/in-situ-permeability/">Slope stability analysis</a><a data-interlink="1" href="/">Active/passive anchor design</a><a data-interlink="1" href="/">Retaining wall design</a></div></div><div class="cat-item" data-cat="ground-improvement"><div class="cat-row"><a data-interlink="1" href="/ground-improvement/" class="cat-name">Ground Improvement</a><button class="cat-toggle" aria-expanded="false" aria-label="Expand Ground Improvement"><span class="cat-arrow"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3.5l3 3 3-3" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></div><div class="cat-sub" hidden><a data-interlink="1" href="/">Stone column design</a><a data-interlink="1" href="/vibrocompaction/">Vibrocompaction design</a></div></div><div class="cat-item" data-cat="excavations"><div class="cat-row"><a data-interlink="1" href="/excavations/" class="cat-name">Underground Excavations</a><button class="cat-toggle" aria-expanded="false" aria-label="Expand Underground Excavations"><span class="cat-arrow"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3.5l3 3 3-3" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></div><div class="cat-sub" hidden><a data-interlink="1" href="/soft-ground-tunnels/">Geotechnical analysis for soft soil tunnels</a><a data-interlink="1" href="/deep-excavations/">Geotechnical design of deep excavations</a><a data-interlink="1" href="/deep-excavations/">Geotechnical excavation monitoring</a></div></div><div class="cat-item" data-cat="road-geotechnics"><div class="cat-row"><a data-interlink="1" href="/" class="cat-name">Road Geotechnics</a><button class="cat-toggle" aria-expanded="false" aria-label="Expand Road Geotechnics"><span class="cat-arrow"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3.5l3 3 3-3" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></div><div class="cat-sub" hidden><a data-interlink="1" href="/ground-improvement/">Flexible pavement design</a><a data-interlink="1" href="/rigid-pavement/">Rigid pavement design</a><a data-interlink="1" href="/cbr-road/">CBR study for road design</a></div></div><div class="cat-item" data-cat="seismic"><div class="cat-row"><a data-interlink="1" href="/seismic/" class="cat-name">Seismic</a><button class="cat-toggle" aria-expanded="false" aria-label="Expand Seismic"><span class="cat-arrow"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3.5l3 3 3-3" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></div><div class="cat-sub" hidden><a data-interlink="1" href="/seismic-refraction/">Soil liquefaction analysis</a><a data-interlink="1" href="/seismic-isolation/">Base isolation seismic design</a><a data-interlink="1" href="/deep-excavations/">Seismic microzonation</a></div></div></aside>
     <main>
 <section class="block" style="padding:2rem 1.5rem"><div style="max-width:1200px;margin:0 auto"><p>The geological context of Chandler, Arizona, is dominated by alluvial basin deposits derived from the Sonoran Desert, characterized by heterogeneous mixtures of sands, silts, and gravels often interbedded with desiccated clays. These near-surface soils can exhibit collapsible fabric upon saturation, variable density with depth, and moderate to high expansion potential in clay-rich lenses. Ground improvement in this environment is essential to mitigate risks associated with total and differential settlements under structural loads, liquefaction susceptibility in saturated granular zones, and volumetric changes from moisture fluctuations. Comprehensive subsurface investigations typically reveal groundwater depths exceeding 30 meters, allowing for dry construction methods, yet localized perched conditions or seasonal recharge may introduce complexities requiring tailored improvement strategies to achieve uniform bearing capacity and stiffness for planned developments.</p><p>Prevailing ground improvement methods in the Chandler area include dynamic compaction for deep densification of granular fills and alluvial sands, utilizing pounders weighing 15 to 40 tons dropped from heights up to 25 meters to reduce void ratios and increase relative density. Vibro-flotation or vibro-compaction is similarly applied to loose cohesionless soils, employing eccentric vibrators to rearrange particles into a denser state. For cohesive or mixed soils where compaction alone is insufficient, deep soil mixing using auger-based tools to blend native soils with cementitious binders in columns of 0.6–3 meters diameter is common. Other techniques such as stone columns (aggregate piers) provide reinforcement, drainage, and load transfer through granular materials installed by displacement or replacement, while preloading with vertical wick drains accelerates consolidation in compressible silt or clay layers beneath planned fills.</p><p>Local geotechnical standards in Chandler align with the International Building Code (IBC) and the City of Chandler Engineering Design Standards and Policies. Specific requirements mandate site-specific geotechnical investigations per ASTM D420 and D1586, with minimum boring depths of 30 meters for multi-story structures. Soil parameters such as friction angle, cohesion, collapse potential, and expansion index must be reported. For ground improvement, acceptance criteria typically target a relative density of 70–85% for liquefaction mitigation under seismic loads (controlling ASCE 7-22 hazard maps) and a modulus of subgrade reaction exceeding 40 pci for slab support. The Arizona Geological Survey provides regional hazard data, but local practice requires strict quality assurance including Proof Rolling, modified Proctor compaction testing, and load frame verification of improved zones before foundation placement.</p><p>Primary applications of ground improvement in Chandler encompass residential subdivisions built on former agricultural lands (alluvial plain), where shallow footing designs rely on improved surface layers to control differential settlement from variable moisture. Commercial and industrial developments—including Class A office parks, data centers, and distribution warehouses—frequently require column-supported treated soil mass to limit total settlement below 25 mm under up to 12 kips per square foot column loads. Infrastructure projects such as road embankments, utility corridors, and retention basins benefit from dynamic compaction to prevent differential movement at transition zones. Additionally, slab-on-grade foundations in tract housing along the Kyrene corridor often incorporate shallow soil mixing or chemical grouting to mitigate expansive clay heave, ensuring long-term performance against the arid climate’s wetting-drying cycles and seasonal precipitation events.</p></div></section>
-<section class="block" style="padding:2rem 1.5rem"><div style="max-width:1200px;margin:0 auto"><h2 style="margin-bottom:1.5rem;font-weight:700">Available services</h2><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem"><a href="../stone-columns/" style="display:block;padding:1.2rem;border:1px solid #E5E7EB;border-radius:10px;text-decoration:none;color:inherit;background:#FFFFFF;transition:all .2s;box-shadow:0 1px 2px rgba(0,0,0,.04)" onmouseover="this.style.borderColor='#F43F5E';this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 14px rgba(0,0,0,.08)'" onmouseout="this.style.borderColor='#E5E7EB';this.style.transform='translateY(0)';this.style.boxShadow='0 1px 2px rgba(0,0,0,.04)'"><h3 style="margin:0 0 .4rem;font-size:1.1rem">Stone column design</h3><span style="font-size:.85rem;color:#666">→ Ver detalle</span></a><a href="../vibrocompaction/" style="display:block;padding:1.2rem;border:1px solid #E5E7EB;border-radius:10px;text-decoration:none;color:inherit;background:#FFFFFF;transition:all .2s;box-shadow:0 1px 2px rgba(0,0,0,.04)" onmouseover="this.style.borderColor='#F43F5E';this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 14px rgba(0,0,0,.08)'" onmouseout="this.style.borderColor='#E5E7EB';this.style.transform='translateY(0)';this.style.boxShadow='0 1px 2px rgba(0,0,0,.04)'"><h3 style="margin:0 0 .4rem;font-size:1.1rem">Vibrocompaction design</h3><span style="font-size:.85rem;color:#666">→ Ver detalle</span></a></div></div></section>
+<section class="block" style="padding:2rem 1.5rem"><div style="max-width:1200px;margin:0 auto"><h2 style="margin-bottom:1.5rem;font-weight:700">Available services</h2><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem"><a href="../stone-columns/" style="display:block;padding:1.2rem;border:1px solid #E5E7EB;border-radius:10px;text-decoration:none;color:inherit;background:#FFFFFF;transition:all .2s;box-shadow:0 1px 2px rgba(0,0,0,.04)" onmouseover="this.style.borderColor='#F43F5E';this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 14px rgba(0,0,0,.08)'" onmouseout="this.style.borderColor='#E5E7EB';this.style.transform='translateY(0)';this.style.boxShadow='0 1px 2px rgba(0,0,0,.04)'"><h3 style="margin:0 0 .4rem;font-size:1.1rem">Stone column design</h3><span style="font-size:.85rem;color:#666">→ View details</span></a><a href="../grouting/" style="display:block;padding:1.2rem;border:1px solid #E5E7EB;border-radius:10px;text-decoration:none;color:inherit;background:#FFFFFF;transition:all .2s;box-shadow:0 1px 2px rgba(0,0,0,.04)"><div style="font-weight:700;margin-bottom:.4rem;color:#1E293B">Grouting</div><div style="color:#64748b;font-size:.85rem">→ View details</div></a></div></div></section>
 </main>
 </div>
 
